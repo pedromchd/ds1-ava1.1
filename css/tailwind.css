@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  :root {
+    --dvd-image-ratio: calc(130/250);
+    --dvd-width: 10vw;
+    --dvd-heigth: calc(var(--dvd-width) * var(--dvd-image-ratio));
+  }
+
+  body {
+    @apply bg-[url(/img/cd.png)] bg-[length:calc(100vw/7)];
+  }
+
+  #dvd {
+    @apply w-[var(--dvd-width)] absolute animate-dvd;
+  }
+}

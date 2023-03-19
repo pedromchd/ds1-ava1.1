@@ -9,8 +9,8 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>
-  <h1 class="text-[5rem] text-red-500 font-bold text-center">Hello World!</h1>
+<body class="h-screen">
+  <img id="dvd" src="img/dvd.png" alt="">
 </body>
 
 </html>
