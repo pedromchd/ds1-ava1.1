@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body class="h-screen">
+<body>
   <img id="dvd" src="img/dvd.png" alt="">
 </body>
 

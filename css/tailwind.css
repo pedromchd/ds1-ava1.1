@@ -10,10 +10,10 @@
   }
 
   body {
-    @apply bg-[url(/img/cd.png)] bg-[length:calc(100vw/7)];
+    @apply bg-[url(/img/cd.png)] bg-[length:calc(100vw/7)] h-screen;
   }
 
   #dvd {
-    @apply w-[var(--dvd-width)] absolute animate-dvd;
+    @apply w-[var(--dvd-width)] absolute animate-dvd -z-50 select-none;
   }
 }
