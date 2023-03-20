@@ -8,12 +8,14 @@ module.exports = {
       },
       keyframes: {
         hue: {
-          'to': { filter: 'hue-rotate(360deg)' },
+          'to': { filter: 'hue-rotate(360deg)' }
         },
         moveX: {
+          'from': { left: 0 },
           'to': { left: 'calc(100vw - var(--dvd-width))' }
         },
         moveY: {
+          'from': { top: 0 },
           'to': { top: 'calc(100vh - var(--dvd-heigth))' }
         }
       }
