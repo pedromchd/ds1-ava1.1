@@ -11,6 +11,7 @@
 
 <body>
   <img id="dvd" src="img/dvd.png" alt="">
+  <h1 class="font-monoton text-9xl text-center">QWERTY GAMES</h1>
 </body>
 
 </html>

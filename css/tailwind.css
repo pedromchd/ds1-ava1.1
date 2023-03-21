@@ -16,4 +16,9 @@
   #dvd {
     @apply w-[var(--dvd-width)] absolute animate-dvd -z-50 select-none;
   }
+
+  @font-face {
+    font-family: Monoton;
+    src: url(../fonts/Monoton.woff2) format('woff2');
+  }
 }

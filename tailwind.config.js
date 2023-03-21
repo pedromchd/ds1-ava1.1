@@ -18,6 +18,9 @@ module.exports = {
           'from': { top: 0 },
           'to': { top: 'calc(100vh - var(--dvd-heigth))' }
         }
+      },
+      fontFamily: {
+        'monoton': ['Monoton', 'cursive']
       }
     },
   },
