@@ -6,12 +6,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
   <img id="dvd" src="img/dvd.png" alt="">
-  <h1 class="font-monoton text-9xl text-center">QWERTY GAMES</h1>
+  <h1 class="font-monoton text-9xl text-center text-white">QWERTY GAMES</h1>
 </body>
 
 </html>
