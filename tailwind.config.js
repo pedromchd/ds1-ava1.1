@@ -20,7 +20,9 @@ module.exports = {
         }
       },
       fontFamily: {
-        'monoton': ['Monoton', 'cursive']
+        'cinzel': ['"Cinzel Decorative"', 'cursive'],
+        'monoton': ['"Monoton"', 'cursive'],
+        '2p': ['"Press Start 2P"', 'cursive']
       }
     },
   },

@@ -11,7 +11,9 @@
 
 <body>
   <img id="dvd" src="img/dvd.png" alt="">
-  <h1 class="font-monoton text-9xl text-center text-white">QWERTY GAMES</h1>
+  <header class="py-5">
+    <h1 class="font-2p text-7xl text-center text-white">QWERTY GAMES</h1>
+  </header>
 </body>
 
 </html>

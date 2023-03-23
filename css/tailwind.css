@@ -18,7 +18,17 @@
   }
 
   @font-face {
-    font-family: Monoton;
-    src: url(../fonts/Monoton.woff2) format('woff2');
+    font-family: 'Cinzel Decorative';
+    src: url(../fonts/CinzelDecorative-Regular.woff2) format('woff2');
+  }
+
+  @font-face {
+    font-family: 'Monoton';
+    src: url(../fonts/Monoton-Regular.woff2) format('woff2');
+  }
+
+  @font-face {
+    font-family: 'Press Start 2P';
+    src: url(../fonts/PressStart2P-Regular.woff2) format('woff2');
   }
 }
