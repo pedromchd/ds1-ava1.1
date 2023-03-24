@@ -17,6 +17,14 @@
     @apply w-[var(--dvd-width)] absolute animate-dvd -z-50 select-none;
   }
 
+  .w98-container {
+    @apply bg-[#ccc] border-2 border-[#fff_#999_#999_#fff];
+  }
+
+  .w98-title-bar {
+    @apply p-1 bg-gradient-to-r from-[#009] to-[#0ef];
+  }
+
   @font-face {
     font-family: 'Press Start 2P';
     src: url(../fonts/PressStart2P-Regular.woff2) format('woff2');
