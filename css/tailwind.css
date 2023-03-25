@@ -20,4 +20,13 @@
   .win98-title-bar {
     @apply px-1 bg-gradient-to-r from-[#009] to-[#0cf];
   }
+
+  .win98-form {
+    @apply outline-1 focus:outline-none focus:ring-2 focus:ring-black !important;
+    outline-style: inset !important;
+  }
+
+  .win98-button {
+    @apply w-[100%] win98-container text-sm hover:outline-none hover:ring-1 hover:ring-black;
+  }
 }
