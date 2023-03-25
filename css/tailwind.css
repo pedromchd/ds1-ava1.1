@@ -3,30 +3,21 @@
 @tailwind utilities;
 
 @layer components {
-  :root {
-    --dvd-image-ratio: calc(130/250);
-    --dvd-width: 10vw;
-    --dvd-heigth: calc(var(--dvd-width) * var(--dvd-image-ratio));
-  }
-
-  body {
-    @apply bg-[url(/img/cd.png)] bg-[length:calc(100vw/7)] h-screen;
-  }
-
-  #dvd {
-    @apply w-[var(--dvd-width)] absolute animate-dvd -z-50 select-none;
-  }
-
-  .w98-container {
-    @apply bg-[#ccc] border-2 border-[#fff_#999_#999_#fff];
-  }
-
-  .w98-title-bar {
-    @apply p-1 bg-gradient-to-r from-[#009] to-[#0ef];
-  }
-
   @font-face {
     font-family: 'Press Start 2P';
     src: url(../fonts/PressStart2P-Regular.woff2) format('woff2');
+  }
+
+  body {
+    @apply bg-[url(/img/zeal.png)] bg-cover bg-right-bottom h-screen;
+  }
+
+  .win98-container {
+    @apply p-0.5 bg-[#ccc] border-2 border-[#fff_#999_#999_#fff] outline-1;
+    outline-style: outset;
+  }
+
+  .win98-title-bar {
+    @apply px-1 bg-gradient-to-r from-[#009] to-[#0cf];
   }
 }
