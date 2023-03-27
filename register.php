@@ -28,7 +28,7 @@
         </div>
         <div class="py-3 pr-3 space-y-3 col-span-3">
           <p>Fill the registration form below.</p>
-          <form name="register" id="register" action="action.php" method="post" class="space-y-4">
+          <form name="register" id="register" action="action.php" method="post" class="space-y-4" autocomplete="off">
             <div class="w-[100%] flex justify-between">
               <label for="email">E-mail:</label>
               <input type="text" name="email" id="email" class="win98-form">

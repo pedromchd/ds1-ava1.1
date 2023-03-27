@@ -28,7 +28,7 @@
         </div>
         <div class="py-3 pr-3 space-y-3 col-span-3">
           <p>Welcome to Querty Library!<br>Login or register to proceed.</p>
-          <form name="login" id="login" action="auth.php" method="post" class="space-y-4">
+          <form name="login" id="login" action="auth.php" method="post" class="space-y-4" autocomplete="off">
             <div class="w-[100%] flex justify-between">
               <label for="username">User name:</label>
               <input type="text" name="username" id="username" class="win98-form">
