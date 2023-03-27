@@ -22,7 +22,7 @@
   }
 
   .win98-form {
-    @apply outline-1 focus:outline-none focus:ring-2 focus:ring-black !important;
+    @apply px-1 outline-1 focus:outline-none focus:ring-2 focus:ring-black !important;
     outline-style: inset !important;
   }
 
