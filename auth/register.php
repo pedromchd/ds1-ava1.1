@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Register - Querty Library</title>
   <link rel="stylesheet" href="/css/styles.css">
-  <link rel="icon" href="/img/joystick.png" type="image/x-icon">
+  <link rel="icon" href="/img/joystick-32x32.png" type="image/x-icon">
 </head>
 
 <body class="bg-[url(/img/zeal.png)] bg-cover bg-right-bottom">
@@ -24,7 +24,7 @@
           </div>
         </header>
         <div class="p-4 space-x-5 flex justify-between">
-          <div><img src="/img/computer.png" alt=""></div>
+          <div><img src="/img/hardware-48x48.png" alt=""></div>
           <article class="flex-grow">
             <p>Please fill in this form to create an account.</p>
             <form name="register" id="register" action="insert_user.php" method="post" class="mt-3 space-y-3">
