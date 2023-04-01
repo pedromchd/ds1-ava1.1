@@ -3,7 +3,7 @@ $uname = $_POST['username'];
 $upass = $_POST['password'];
 
 $db = new mysqli('localhost', 'root', '', 'library');
-$stmt = $db->prepare('SELECT * FROM user WHERE username = ?');
+$stmt = $db->prepare('SELECT * FROM user WHERE name = ?');
 $stmt->bind_param('s', $uname);
 $stmt->execute();
 
@@ -12,6 +12,6 @@ $row = $result->fetch_assoc();
 
 if (password_verify($upass, $row['password'])) {
   session_start();
-  $_SESSION['username'] = $row['username'];
+  $_SESSION['username'] = $row['name'];
   header('Location: /home/');
 }
