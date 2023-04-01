@@ -12,14 +12,14 @@
 
 <body class="bg-[url(/img/zeal.png)] bg-cover bg-right-bottom">
   <main class="h-screen grid grid-cols-3 place-items-center">
-    <div class="col-span-2 border-2 border-[#fff_#999_#999_#fff] outline-1 [outline-style:outset]">
+    <div class="col-span-2 border-2 [border-style:outset] outline-1 [outline-style:outset]">
       <section class="p-0.5 min-w-[31rem] bg-[#ccc]">
         <header class="px-1 bg-gradient-to-r from-[#009] to-[#09f] flex items-center justify-between">
           <h1 class="font-mono text-white">Register New Account</h1>
-          <div class="p-0.5 bg-[#ccc] col-span-2 border-2 border-[#fff_#999_#999_#fff] outline-1 [outline-style:outset]">
+          <div class="p-0.5 bg-[#ccc] border-2 [border-style:outset] outline-1 [outline-style:outset]">
             <svg width="10" height="10" viewBox="0 0 100 100">
-              <line stroke-width="20" stroke="#000" stroke-linecap="round" x1="10" y1="10" x2="90" y2="90" />
-              <line stroke-width="20" stroke="#000" stroke-linecap="round" x1="90" y1="10" x2="10" y2="90" />
+              <path d="M 10 10 L 90 90" stroke="#000" stroke-width="20" stroke-linecap="round" />
+              <path d="M 90 10 L 10 90" stroke="#000" stroke-width="20" stroke-linecap="round" />
             </svg>
           </div>
         </header>
@@ -39,12 +39,12 @@
               </div>
             </form>
           </article>
-          <div class="space-y-3">
-            <button form="login" class="block w-20 border-2 border-[#fff_#999_#999_#fff] outline-1 [outline-style:outset]">
+          <div class="space-y-3 font-mono">
+            <button form="login" class="block w-20 bg-[#ccc] border-2 [border-style:outset] outline-1 [outline-style:outset]">
               Login
             </button>
             <a href="register.php" class="block">
-              <button class="w-20 border-2 border-[#fff_#999_#999_#fff] outline-1 [outline-style:outset]">
+              <button class="w-20 bg-[#ccc] border-2 [border-style:outset] outline-1 [outline-style:outset]">
                 Register
               </button>
             </a>
