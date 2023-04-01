@@ -1,4 +1,15 @@
-<?php session_start(); ?>
+<?php
+session_start();
+
+$uname = $_SESSION['username'];
+
+$db = new mysqli('localhost', 'root', '', 'library');
+$stmt = $db->prepare('SELECT game.* FROM game JOIN user ON game.user = user.id WHERE user.name = ?');
+$stmt->bind_param('s', $uname);
+$stmt->execute();
+
+$result = $stmt->get_result();
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -42,10 +53,10 @@
       </section>
     </div>
     <div class="row-start-2 col-span-2 row-span-2 border-2 [border-style:outset] outline-1 [outline-style:outset]">
-      <section class="p-0.5 min-w-[74rem] max-w-[74rem] min-h-[25rem] max-h-[25rem] bg-[#ccc] flex flex-col">
+      <section class="p-0.5 min-w-[75rem] max-w-[75rem] min-h-[25rem] max-h-[25rem] bg-[#ccc] flex flex-col">
         <header class="px-1 bg-gradient-to-r from-[#009] to-[#09f] flex items-center justify-between">
           <div><img src="/img/joystick-16x16.png" alt=""></div>
-          <h1 class="ml-1 font-mono text-white flex-grow"><?="$_SESSION[username]'s Library"?></h1>
+          <h1 class="ml-1 font-mono text-white flex-grow"><?= "$uname's Library" ?></h1>
           <div class="p-0.5 bg-[#ccc] border-2 [border-style:outset] outline-1 [outline-style:outset]">
             <svg width="10" height="10" viewBox="0 0 100 100">
               <path d="M 10 10 L 90 90" stroke="#000" stroke-width="20" stroke-linecap="round" />
@@ -54,12 +65,14 @@
           </div>
         </header>
         <div class="p-[1px] my-1 font-mono">
-          <button class="bg-[#ccc] border-2 [border-style:outset] outline-1 [outline-style:outset]">
-            <div class="w-32 py-1 px-2 flex items-center space-x-3">
-              <img src="/img/devices-32x32.png" alt="">
-              <p>Add new</p>
-            </div>
-          </button>
+          <a href="new.php">
+            <button class="bg-[#ccc] border-2 [border-style:outset] outline-1 [outline-style:outset]">
+              <div class="w-32 py-1 px-2 flex items-center space-x-3">
+                <img src="/img/devices-32x32.png" alt="">
+                <p>Add new</p>
+              </div>
+            </button>
+          </a>
           <button class="bg-[#ccc] border-2 [border-style:outset] outline-1 [outline-style:outset]">
             <div class="w-32 py-1 px-2 flex items-center space-x-3">
               <img src="/img/write-32x32.png" alt="">
@@ -74,7 +87,24 @@
           </button>
         </div>
         <div class="bg-[#fff] flex-grow border-2 [border-style:inset] overflow-y-scroll">
-
+          <table class="w-[100%]">
+            <tr>
+              <th>Name</th>
+              <th>System</th>
+              <th>Release Year</th>
+              <th>Developer</th>
+              <th>Cover</th>
+            </tr>
+            <?php while ($row = $result->fetch_assoc()) : ?>
+              <tr>
+                <td><?= $row['name'] ?></td>
+                <td><?= $row['system'] ?></td>
+                <td><?= $row['year'] ?></td>
+                <td><?= $row['developer'] ?></td>
+                <td><?= $row['cover'] ?></td>
+              </tr>
+            <?php endwhile; ?>
+          </table>
         </div>
       </section>
     </div>
