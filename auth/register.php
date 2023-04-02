@@ -30,15 +30,15 @@
             <form name="register" id="register" action="insert_user.php" method="post" class="mt-3 space-y-3">
               <div class="flex justify-between">
                 <label for="email">E-mail:</label>
-                <input type="text" name="email" id="email" class="px-1 outline-1 [outline-style:inset]">
+                <input type="text" name="email" id="email" class="px-1 outline-1 [outline-style:inset]" required>
               </div>
               <div class="flex justify-between">
                 <label for="username">User name:</label>
-                <input type="text" name="username" id="username" class="px-1 outline-1 [outline-style:inset]">
+                <input type="text" name="username" id="username" class="px-1 outline-1 [outline-style:inset]" required>
               </div>
               <div class="flex justify-between">
                 <label for="password">Password:</label>
-                <input type="password" name="password" id="password" class="px-1 outline-1 [outline-style:inset]">
+                <input type="password" name="password" id="password" class="px-1 outline-1 [outline-style:inset]" required>
               </div>
             </form>
           </article>

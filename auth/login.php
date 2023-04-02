@@ -31,11 +31,11 @@
             <form name="login" id="login" action="session.php" method="post" class="mt-3 space-y-3">
               <div class="flex justify-between">
                 <label for="username">User name:</label>
-                <input type="text" name="username" id="username" class="px-1 outline-1 [outline-style:inset]">
+                <input type="text" name="username" id="username" class="px-1 outline-1 [outline-style:inset]" required>
               </div>
               <div class="flex justify-between">
                 <label for="password">Password:</label>
-                <input type="password" name="password" id="password" class="px-1 outline-1 [outline-style:inset]">
+                <input type="password" name="password" id="password" class="px-1 outline-1 [outline-style:inset]" required>
               </div>
             </form>
           </article>

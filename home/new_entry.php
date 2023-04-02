@@ -65,19 +65,19 @@ $uname = $_SESSION['username'];
             <form name="newEntry" id="newEntry" action="insert_data.php" method="post" enctype="multipart/form-data" class="mt-3 space-y-3">
               <div class="flex justify-between">
                 <label for="name">Name:</label>
-                <input type="text" name="name" id="name" class="w-[70%] px-1 outline-1 [outline-style:inset]">
+                <input type="text" name="name" id="name" class="w-[70%] px-1 outline-1 [outline-style:inset]" required>
               </div>
               <div class="flex justify-between">
                 <label for="year">Release year:</label>
-                <input type="number" name="year" id="year" class="w-[70%] px-1 outline-1 [outline-style:inset]">
+                <input type="number" name="year" id="year" class="w-[70%] px-1 outline-1 [outline-style:inset]" required>
               </div>
               <div class="flex justify-between">
                 <label for="system">System:</label>
-                <input type="text" name="system" id="system" class="w-[70%] px-1 outline-1 [outline-style:inset]">
+                <input type="text" name="system" id="system" class="w-[70%] px-1 outline-1 [outline-style:inset]" required>
               </div>
               <div class="flex justify-between">
                 <label for="developer">Developer:</label>
-                <input type="text" name="developer" id="developer" class="w-[70%] px-1 outline-1 [outline-style:inset]">
+                <input type="text" name="developer" id="developer" class="w-[70%] px-1 outline-1 [outline-style:inset]" required>
               </div>
               <div class="flex justify-between">
                 <label for="cover">Cover:</label>
