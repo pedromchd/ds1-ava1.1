@@ -1,11 +1,12 @@
 <?php
 session_start();
 
+$userID = $_SESSION['user_id'];
 $uname = $_SESSION['username'];
 
 $db = new mysqli('localhost', 'root', '', 'library');
-$stmt = $db->prepare('SELECT game.* FROM game JOIN user ON game.user = user.id WHERE user.name = ?');
-$stmt->bind_param('s', $uname);
+$stmt = $db->prepare('SELECT * FROM game WHERE user = ?');
+$stmt->bind_param('s', $userID);
 $stmt->execute();
 
 $result = $stmt->get_result();
@@ -18,7 +19,7 @@ $result = $stmt->get_result();
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login - Querty Library</title>
+  <title>Home - Querty Library</title>
   <link rel="stylesheet" href="/css/styles.css">
   <link rel="icon" href="/img/joystick-32x32.png" type="image/x-icon">
 </head>
@@ -53,7 +54,7 @@ $result = $stmt->get_result();
       </section>
     </div>
     <div class="row-start-2 col-span-3 row-span-2 border-2 [border-style:outset] outline-1 [outline-style:outset]">
-      <section class="p-0.5 min-w-[75rem] max-w-[75rem] min-h-[25rem] max-h-[25rem] bg-[#ccc] flex flex-col">
+      <section class="p-0.5 min-w-[65rem] max-w-[75rem] min-h-[25rem] max-h-[25rem] bg-[#ccc] flex flex-col">
         <header class="px-1 bg-gradient-to-r from-[#009] to-[#09f] flex items-center justify-between">
           <div><img src="/img/joystick-16x16.png" alt=""></div>
           <h1 class="ml-1 font-mono text-white flex-grow"><?= "$uname's Library" ?></h1>
@@ -87,17 +88,17 @@ $result = $stmt->get_result();
           </button>
         </div>
         <div class="bg-[#fff] flex-grow border-2 [border-style:inset] overflow-y-scroll">
-          <table class="w-[100%]">
-            <tr>
-              <th>Name</th>
-              <th>System (Console)</th>
-              <th>Release Year</th>
-              <th>Developer</th>
+          <table class="w-[100%] border-separate relative">
+            <tr class="sticky top-[2px]">
               <th>Cover</th>
+              <th>Name</th>
+              <th>Release Year</th>
+              <th>System (Console)</th>
+              <th>Developer</th>
             </tr>
             <?php while ($row = $result->fetch_assoc()) : ?>
               <tr>
-                <td><?= $row['cover'] ?></td>
+                <td style="background-image: url(<?= $row['cover'] ?>);"></td>
                 <td><?= $row['name'] ?></td>
                 <td><?= $row['year'] ?></td>
                 <td><?= $row['system'] ?></td>

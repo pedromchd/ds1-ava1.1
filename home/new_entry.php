@@ -1,6 +1,7 @@
 <?php
 session_start();
 
+$userID = $_SESSION['user_id'];
 $uname = $_SESSION['username'];
 ?>
 
@@ -61,7 +62,7 @@ $uname = $_SESSION['username'];
         <div class="p-4 space-x-5 flex justify-between">
           <article class="flex-grow">
             <p>Please fill in this form to add your game data.</p>
-            <form name="newEntry" id="newEntry" action="insert_data.php" method="post" class="mt-3 space-y-3">
+            <form name="newEntry" id="newEntry" action="insert_data.php" method="post" enctype="multipart/form-data" class="mt-3 space-y-3">
               <div class="flex justify-between">
                 <label for="name">Name:</label>
                 <input type="text" name="name" id="name" class="w-[70%] px-1 outline-1 [outline-style:inset]">
@@ -81,6 +82,9 @@ $uname = $_SESSION['username'];
               <div class="flex justify-between">
                 <label for="cover">Cover:</label>
                 <input type="file" name="cover" id="cover" class="w-[70%]">
+              </div>
+              <div class="hidden">
+                <input type="hidden" name="user_id" value=<?= $userID ?>>
               </div>
             </form>
           </article>
