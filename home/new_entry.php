@@ -24,12 +24,12 @@ $uname = $_SESSION['username'];
       <section class="p-0.5 min-w-[31rem] bg-[#ccc]">
         <header class="px-1 bg-gradient-to-r from-[#009] to-[#09f] flex items-center justify-between">
           <h1 class="font-mono text-white">Querty Library</h1>
-          <div class="p-0.5 bg-[#ccc] border-2 [border-style:outset] outline-1 [outline-style:outset]">
+          <button class="p-0.5 bg-[#ccc] border-2 [border-style:outset] outline-1 [outline-style:outset]">
             <svg width="10" height="10" viewBox="0 0 100 100">
               <path d="M 10 10 L 90 90" stroke="#000" stroke-width="20" stroke-linecap="round" />
               <path d="M 90 10 L 10 90" stroke="#000" stroke-width="20" stroke-linecap="round" />
             </svg>
-          </div>
+          </button>
         </header>
         <div class="p-4 space-x-5 flex justify-between">
           <div><img src="/img/joystick-48x48.png" alt=""></div>
@@ -52,12 +52,12 @@ $uname = $_SESSION['username'];
         <header class="px-1 bg-gradient-to-r from-[#009] to-[#09f] flex items-center justify-between">
           <div><img src="/img/devices-16x16.png" alt=""></div>
           <h1 class="ml-1 font-mono text-white flex-grow">Add new entry</h1>
-          <div class="p-0.5 bg-[#ccc] border-2 [border-style:outset] outline-1 [outline-style:outset]">
+          <button class="p-0.5 bg-[#ccc] border-2 [border-style:outset] outline-1 [outline-style:outset]">
             <svg width="10" height="10" viewBox="0 0 100 100">
               <path d="M 10 10 L 90 90" stroke="#000" stroke-width="20" stroke-linecap="round" />
               <path d="M 90 10 L 10 90" stroke="#000" stroke-width="20" stroke-linecap="round" />
             </svg>
-          </div>
+          </button>
         </header>
         <div class="p-4 space-x-5 flex justify-between">
           <article class="flex-grow">
@@ -92,7 +92,7 @@ $uname = $_SESSION['username'];
             <p>Preview:</p>
             <div id="thumbnail" class="flex-grow border border-dashed border-black bg-[#fff]"></div>
             <div>
-              <button form="newEntry" class=" w-20 bg-[#ccc] border-2 [border-style:outset] outline-1 [outline-style:outset]">
+              <button form="newEntry" class="w-20 bg-[#ccc] border-2 [border-style:outset] outline-1 [outline-style:outset]">
                 Submit
               </button>
               <a href="index.php" class="">
