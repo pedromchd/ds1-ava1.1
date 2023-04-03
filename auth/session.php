@@ -15,4 +15,6 @@ if (password_verify($upass, $row['password'])) {
   $_SESSION['user_id'] = $row['id'];
   $_SESSION['username'] = $row['name'];
   header('Location: /home/');
+  exit;
 }
+header('Location: login.php?code=500');

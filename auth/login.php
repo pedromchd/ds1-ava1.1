@@ -28,7 +28,7 @@
           <article class="flex-grow">
             <p>Welcome to Querty Library!</p>
             <p>Please, login or register to proceed.</p>
-            <form name="login" id="login" action="session.php" method="post" class="mt-3 space-y-3">
+            <form name="login" id="login" action="session.php" method="post" class="mt-3 mb-2 space-y-3">
               <div class="flex justify-between">
                 <label for="username">User name:</label>
                 <input type="text" name="username" id="username" class="px-1 outline-1 [outline-style:inset]" required>
@@ -38,6 +38,16 @@
                 <input type="password" name="password" id="password" class="px-1 outline-1 [outline-style:inset]" required>
               </div>
             </form>
+            <?php
+            if (isset($_GET['code'])) {
+              if ($_GET['code'] == 200) {
+                echo '<p class="text-sm text-center text-green-800">Register success! You can login now.</p>';
+              } else
+              if ($_GET['code'] == 500) {
+                echo '<p class="text-sm text-center text-red-800">Invalid username or password.</p>';
+              }
+            }
+            ?>
           </article>
           <div class="space-y-3 font-mono">
             <button form="login" class="block w-20 bg-[#ccc] border-2 [border-style:outset] outline-1 [outline-style:outset]">
