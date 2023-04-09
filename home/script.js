@@ -1,4 +1,4 @@
-const form = document.newEntry.cover;
+const form = document.forms[0].cover;
 const thumb = document.querySelector('#thumbnail');
 
 form.addEventListener('change', handleFile);

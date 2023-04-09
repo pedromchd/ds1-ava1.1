@@ -3,6 +3,16 @@ session_start();
 
 $userID = $_SESSION['user_id'];
 $uname = $_SESSION['username'];
+
+$gameID = $_POST['id'];
+
+$db = new mysqli('localhost', 'root', '', 'library');
+$stmt = $db->prepare('SELECT * FROM game WHERE id = ?');
+$stmt->bind_param('s', $gameID);
+$stmt->execute();
+
+$result = $stmt->get_result();
+$row = $result->fetch_assoc();
 ?>
 
 <!DOCTYPE html>
@@ -62,37 +72,37 @@ $uname = $_SESSION['username'];
         <div class="p-4 space-x-5 flex justify-between">
           <article class="flex-grow">
             <p>Please fill in this form to add your game data.</p>
-            <form name="newEntry" id="newEntry" action="insert_data.php" method="post" enctype="multipart/form-data" class="mt-3 space-y-3">
+            <form name="editEntry" id="editEntry" action="edit_data.php" method="post" enctype="multipart/form-data" class="mt-3 space-y-3">
               <div class="flex justify-between">
                 <label for="name">Name:</label>
-                <input type="text" name="name" id="name" class="w-[70%] px-1 outline-1 [outline-style:inset]" required>
+                <input type="text" name="name" id="name" value="<?= $row['name'] ?>" class="w-[70%] px-1 outline-1 [outline-style:inset]" required>
               </div>
               <div class="flex justify-between">
                 <label for="year">Release year:</label>
-                <input type="number" name="year" id="year" class="w-[70%] px-1 outline-1 [outline-style:inset]" required>
+                <input type="number" name="year" id="year" value="<?= $row['year'] ?>" class="w-[70%] px-1 outline-1 [outline-style:inset]" required>
               </div>
               <div class="flex justify-between">
                 <label for="system">System:</label>
-                <input type="text" name="system" id="system" class="w-[70%] px-1 outline-1 [outline-style:inset]" required>
+                <input type="text" name="system" id="system" value="<?= $row['system'] ?>" class="w-[70%] px-1 outline-1 [outline-style:inset]" required>
               </div>
               <div class="flex justify-between">
                 <label for="developer">Developer:</label>
-                <input type="text" name="developer" id="developer" class="w-[70%] px-1 outline-1 [outline-style:inset]" required>
+                <input type="text" name="developer" id="developer" value="<?= $row['developer'] ?>" class="w-[70%] px-1 outline-1 [outline-style:inset]" required>
               </div>
               <div class="flex justify-between">
                 <label for="cover">Cover:</label>
                 <input type="file" name="cover" id="cover" class="w-[70%]">
               </div>
               <div class="hidden">
-                <input type="hidden" name="user_id" value=<?= $userID ?>>
+                <input type="hidden" name="game_id" value=<?= $gameID ?>>
               </div>
             </form>
           </article>
           <div class="space-y-3 font-mono flex flex-col">
             <p>Preview:</p>
-            <div id="thumbnail" class="flex-grow border border-dashed border-black bg-[#fff]"></div>
+            <div id="thumbnail" class="flex-grow border border-dashed border-black bg-[#fff] bg-no-repeat bg-center bg-contain" style="background-image: url(<?= $row['cover'] ?>);"></div>
             <div>
-              <button form="newEntry" class="w-20 bg-[#ccc] border-2 [border-style:outset] outline-1 [outline-style:outset]">
+              <button form="editEntry" class="w-20 bg-[#ccc] border-2 [border-style:outset] outline-1 [outline-style:outset]">
                 Submit
               </button>
               <a href="index.php" class="">

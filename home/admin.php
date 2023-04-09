@@ -84,13 +84,13 @@ $result = $stmt->get_result();
               </div>
             </button>
           </a>
-          <button class="bg-[#ccc] border-2 [border-style:outset] outline-1 [outline-style:outset]">
+          <button type="submit" form="alter" formaction="edit_entry.php" class="bg-[#ccc] border-2 [border-style:outset] outline-1 [outline-style:outset]">
             <div class="w-32 py-1 px-2 flex items-center space-x-3">
               <img src="/img/write-32x32.png" alt="">
               <p>Edit</p>
             </div>
           </button>
-          <button class="bg-[#ccc] border-2 [border-style:outset] outline-1 [outline-style:outset]">
+          <button type="submit" form="alter" formaction="delete_entry.php" class="bg-[#ccc] border-2 [border-style:outset] outline-1 [outline-style:outset]">
             <div class="w-32 py-1 px-2 flex items-center space-x-3">
               <img src="/img/bin-32x32.png" alt="">
               <p>Delete</p>
@@ -103,6 +103,7 @@ $result = $stmt->get_result();
             </div>
           </button>
           <div class="inline-block">
+            <form id="alter" method="post"></form>
             <p>Found <?= $result->num_rows ?> entries.</p>
           </div>
         </div>
@@ -117,13 +118,16 @@ $result = $stmt->get_result();
               <th>User</th>
             </tr>
             <?php while ($row = $result->fetch_assoc()) : ?>
-              <tr>
+              <tr onclick="this.querySelector('input').checked = true">
                 <td style="background-image: url(<?= $row['cover'] ?>);"></td>
                 <td><?= $row['name'] ?></td>
                 <td><?= $row['year'] ?></td>
                 <td><?= $row['system'] ?></td>
                 <td><?= $row['developer'] ?></td>
                 <td><?= $row['user'] ?></td>
+                <td class="hidden">
+                  <input type="radio" form="alter" name="id" value="<?= $row['id'] ?>" required>
+                </td>
               </tr>
             <?php endwhile; ?>
           </table>

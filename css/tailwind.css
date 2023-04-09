@@ -7,6 +7,10 @@
     @apply bg-[#eee];
   }
 
+  tr:has(input:checked) {
+    @apply outline-2 [outline-style:inset];
+  }
+
   th,
   td {
     @apply px-2 py-1 border border-[#ccc] text-left;
