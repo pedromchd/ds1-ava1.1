@@ -10,7 +10,7 @@ $stmt = $db->prepare('UPDATE game SET name = ?, year = ?, system = ?, developer 
 $stmt->bind_param('sssss', $name, $year, $system, $developer, $gameID);
 $stmt->execute();
 
-if (isset($_FILES['cover'])) {
+if ($_FILES['cover']['name']) {
   $cover = $_FILES['cover'];
   $path = 'uploads/' . uniqid() . "_$cover[name]";
   move_uploaded_file($cover['tmp_name'], $path);
