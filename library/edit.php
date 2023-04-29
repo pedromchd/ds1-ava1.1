@@ -14,10 +14,12 @@ $cover = $_FILES['cover'];
 if ($file = $cover['tmp_name']) {
   $path = 'uploads/' . uniqid() . $cover['name'];
   move_uploaded_file($file, $path);
-  $db->query("UPDATE game SET cover = $path WHERE id = $game");
+  $stmt = $db->prepare('UPDATE game SET cover = ? WHERE id = ?');
+  $stmt->bind_param('ss', $path, $game);
+  $stmt->execute();
 }
 
 $db->close();
 
-header('Location: index.php');
+header('Location: /home.php');
 exit;

@@ -9,19 +9,22 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body>
-  <main>
-    <fieldset>
-      <legend>Login</legend>
-      <form action="/auth/login.php" method="post">
+<body class="h-screen bg-green-100 flex">
+  <header class="py-3 px-5 bg-green-300">
+    <h1 class="text-3xl font-bold">Querty Library</h1>
+  </header>
+  <main class="flex-grow grid place-items-center">
+    <form action="/auth/login.php" method="post">
+      <fieldset class="w-[20rem] p-5 border-2 border-green-800 rounded-md grid gap-2">
+        <legend class="px-1 text-xl text-green-800 font-semibold">Login</legend>
         <label for="email">Email:</label>
-        <input type="email" name="email" id="email" required>
+        <input type="email" name="email" id="email" required class="px-1 py-0.5 border border-green-500 focus:outline-green-600">
         <label for="pass">Password:</label>
-        <input type="password" name="pass" id="pass" required>
-        <input type="submit" value="Submit">
-        <a href="/register.php">Register</a>
-      </form>
-    </fieldset>
+        <input type="password" name="pass" id="pass" required class="px-1 py-0.5 border border-green-500 focus:outline-green-600">
+        <input type="submit" value="Login" class="mt-2 py-1 bg-green-400 rounded-sm cursor-pointer hover:brightness-[90%]">
+        <a href="/register.php" class="text-center py-1 bg-green-300 rounded-sm hover:brightness-[90%]">Register</a>
+      </fieldset>
+    </form>
   </main>
 </body>
 

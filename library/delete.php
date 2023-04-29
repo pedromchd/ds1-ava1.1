@@ -8,3 +8,4 @@ $stmt->execute();
 $db->close();
 
 header('Location: /home.php');
+exit;
