@@ -7,7 +7,9 @@ $user = $_POST['user'];
 
 $cover = $_FILES['cover'];
 if ($file = $cover['tmp_name']) {
-  $path = 'uploads/' . uniqid() . $cover['name'];
+  $aux = $cover['name'];
+  $ext = substr($aux, strrpos($aux, '.'));
+  $path = 'uploads/' . uniqid() . $ext;
   move_uploaded_file($file, $path);
 }
 

@@ -59,10 +59,11 @@ $db->close();
       </article>
       <article class="mt-3 flex gap-3">
         <form action="/library/delete.php" method="post">
+          <input type="hidden" name="old" value="<?= $row['cover'] ?>">
           <input type="hidden" name="game" value="<?= $row['id'] ?>">
-          <input type="submit" value="Delete" class="px-5 py-1 bg-green-400 rounded-sm cursor-pointer hover:brightness-[90%]">
+          <input type="submit" value="Delete" class="px-5 py-1 bg-green-300 cursor-pointer hover:bg-green-400">
         </form>
-        <a href="/home.php" class="text-center px-5 py-1 bg-green-300 rounded-sm hover:brightness-[90%]">Cancel</a>
+        <a href="/home.php" class="text-center px-5 py-1 bg-green-300 hover:bg-green-400">Cancel</a>
       </article>
     </section>
   </main>

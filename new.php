@@ -32,7 +32,7 @@ $db->close();
   </header>
   <main class="flex-grow grid place-items-center">
     <form action="/library/new.php" method="post" enctype="multipart/form-data">
-      <fieldset class="w-[25rem] p-5 border-2 border-green-800 rounded-md grid gap-2">
+      <fieldset class="w-[25rem] p-5 border-2 border-green-800 grid gap-2">
         <legend class="px-1 text-xl text-green-800 font-semibold">New</legend>
         <label for="name">Name:</label>
         <input type="text" name="name" id="name" required class="px-1 py-0.5 border border-green-500 focus:outline-green-600">
@@ -52,8 +52,8 @@ $db->close();
         <label for="cover">Cover:</label>
         <input type="file" name="cover" id="cover">
         <input type="hidden" name="user" value="<?= $user ?>">
-        <input type="submit" value="Add" class="mt-2 py-1 bg-green-400 rounded-sm cursor-pointer hover:brightness-[90%]">
-        <a href="/home.php" class="text-center py-1 bg-green-300 rounded-sm hover:brightness-[90%]">Cancel</a>
+        <input type="submit" value="Add" class="mt-2 py-1 bg-green-300 cursor-pointer hover:bg-green-400">
+        <a href="/home.php" class="text-center py-1 bg-green-300 hover:bg-green-400">Cancel</a>
       </fieldset>
     </form>
   </main>

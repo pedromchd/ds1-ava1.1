@@ -15,7 +15,7 @@
   </header>
   <main class="flex-grow grid place-items-center">
     <form action="/auth/register.php" method="post">
-      <fieldset class="w-[20rem] p-5 border-2 border-green-800 rounded-md grid gap-2">
+      <fieldset class="w-[20rem] p-5 border-2 border-green-800 grid gap-2">
         <legend class="px-1 text-xl text-green-800 font-semibold">Register</legend>
         <label for="name">Name:</label>
         <input type="text" name="name" id="name" required class="px-1 py-0.5 border border-green-500 focus:outline-green-600">
@@ -23,8 +23,8 @@
         <input type="email" name="email" id="email" required class="px-1 py-0.5 border border-green-500 focus:outline-green-600">
         <label for="pass">Password:</label>
         <input type="password" name="pass" id="pass" required class="px-1 py-0.5 border border-green-500 focus:outline-green-600">
-        <input type="submit" value="Register" class="mt-2 py-1 bg-green-400 rounded-sm cursor-pointer hover:brightness-[90%]">
-        <a href="/login.php" class="text-center py-1 bg-green-300 rounded-sm hover:brightness-[90%]">Return</a>
+        <input type="submit" value="Register" class="mt-2 py-1 bg-green-300 cursor-pointer hover:bg-green-400">
+        <a href="/login.php" class="text-center py-1 bg-green-300 hover:bg-green-400">Return</a>
       </fieldset>
     </form>
   </main>
