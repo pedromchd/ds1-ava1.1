@@ -24,6 +24,22 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `deleted`
+--
+
+CREATE TABLE `deleted` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `year` year(4) NOT NULL,
+  `system` varchar(255) NOT NULL,
+  `developer` varchar(255) NOT NULL,
+  `user` varchar(255) NOT NULL,
+  `exclusion` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `game`
 --
 
@@ -31,7 +47,7 @@ CREATE TABLE `game` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `year` year(4) NOT NULL,
-  `system` int(11) NOT NULL,
+  `system` int(11) DEFAULT NULL,
   `developer` varchar(255) NOT NULL,
   `cover` varchar(255) NOT NULL,
   `user` int(11) NOT NULL
@@ -72,6 +88,12 @@ INSERT INTO `user` (`id`, `name`, `email`, `pass`) VALUES
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `deleted`
+--
+ALTER TABLE `deleted`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `game`
@@ -125,7 +147,7 @@ ALTER TABLE `user`
 -- Constraints for table `game`
 --
 ALTER TABLE `game`
-  ADD CONSTRAINT `game_ibfk_1` FOREIGN KEY (`system`) REFERENCES `system` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `game_ibfk_1` FOREIGN KEY (`system`) REFERENCES `system` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
   ADD CONSTRAINT `game_ibfk_2` FOREIGN KEY (`user`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
