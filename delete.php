@@ -7,7 +7,7 @@ $name = $_SESSION['name'];
 $game = $_GET['game'];
 
 $db = new mysqli('localhost', 'root', '', 'library');
-$stmt = $db->prepare("SELECT game.*, system.name AS systemName FROM game JOIN system ON game.system = system.id WHERE game.id = ?");
+$stmt = $db->prepare('SELECT game.*, system.name AS systemName, user.name AS userName FROM game LEFT JOIN system ON game.system = system.id JOIN user ON game.user = user.id WHERE game.id = ?');
 $stmt->bind_param('s', $game);
 $stmt->execute();
 $result = $stmt->get_result();
@@ -31,10 +31,15 @@ $db->close();
     <h1 class="mb-3 text-3xl font-bold">Querty Library</h1>
     <nav class="text-lg space-y-2">
       <ol class="border border-green-500 divide-y divide-green-500">
-        <li class="bg-green-400 hover:bg-green-500"><a href="/new.php" class="p-2 block">Add game</a></li>
+        <li class="bg-green-400 hover:bg-green-500"><a href="/home.php" class="p-2 block">View games</a></li>
       </ol>
-      <ol class="border border-green-500 divide-y divide-green-500">
-        <li class="bg-green-400 hover:bg-green-500"><a href="/auth/logout.php" class="p-2 block">Logout</a></li>
+      <?php if ($user === 1 && $name === 'admin') : ?>
+        <ol class="border border-blue-500 divide-y divide-blue-500">
+          <li class="bg-blue-400 hover:bg-blue-500"><a href="/system/view.php" class="p-2 block">View systems</a></li>
+        </ol>
+      <?php endif; ?>
+      <ol class="border border-red-500 divide-y divide-red-500">
+        <li class="bg-red-400 hover:bg-red-500"><a href="/auth/logout.php" class="p-2 block">Logout</a></li>
       </ol>
     </nav>
   </header>
@@ -44,6 +49,10 @@ $db->close();
       <article>
         <table class="border border-green-300">
           <tr class="bg-green-200 border border-green-300 divide-x divide-green-300 text-center font-semibold">
+            <?php if ($user === 1 && $name === 'admin') : ?>
+            <td class="p-2">ID</td>
+            <td class="p-2">User</td>
+            <?php endif; ?>
             <td class="p-2">Cover</td>
             <td class="p-2">Name</td>
             <td class="p-2">Year</td>
@@ -51,6 +60,10 @@ $db->close();
             <td class="p-2">Developer</td>
           </tr>
           <tr class="border border-green-300 divide-x divide-green-300 text-center">
+            <?php if ($user === 1 && $name === 'admin') : ?>
+            <td class="p-2"><?= $row['id'] ?></td>
+            <td class="p-2"><?= $row['userName'] ?></td>
+            <?php endif; ?>
             <td><img src="/library/<?= $row['cover'] ?>" class="object-cover h-20 w-40" /></td>
             <td class="p-2"><?= $row['name'] ?></td>
             <td class="p-2"><?= $row['year'] ?></td>

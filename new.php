@@ -25,10 +25,15 @@ $db->close();
     <h1 class="mb-3 text-3xl font-bold">Querty Library</h1>
     <nav class="text-lg space-y-2">
       <ol class="border border-green-500 divide-y divide-green-500">
-        <li class="bg-green-400 hover:bg-green-500"><a href="/new.php" class="p-2 block">Add game</a></li>
+        <li class="bg-green-400 hover:bg-green-500"><a href="/home.php" class="p-2 block">View games</a></li>
       </ol>
-      <ol class="border border-green-500 divide-y divide-green-500">
-        <li class="bg-green-400 hover:bg-green-500"><a href="/auth/logout.php" class="p-2 block">Logout</a></li>
+      <?php if ($user === 1 && $name === 'admin') : ?>
+      <ol class="border border-blue-500 divide-y divide-blue-500">
+        <li class="bg-blue-400 hover:bg-blue-500"><a href="/system/view.php" class="p-2 block">View systems</a></li>
+      </ol>
+      <?php endif; ?>
+      <ol class="border border-red-500 divide-y divide-red-500">
+        <li class="bg-red-400 hover:bg-red-500"><a href="/auth/logout.php" class="p-2 block">Logout</a></li>
       </ol>
     </nav>
   </header>
@@ -41,7 +46,7 @@ $db->close();
         <label for="year">Year:</label>
         <input type="number" name="year" id="year" required class="px-1 py-0.5 border border-green-500 focus:outline-green-600">
         <label for="system">System:</label>
-        <select name="system" id="system" required class="px-1 py-0.5 border border-green-500 focus:outline-green-600">
+        <select name="system" id="system" class="px-1 py-0.5 border border-green-500 focus:outline-green-600">
           <option disabled selected>Select one</option>
           <?php
           while ($row = $result->fetch_assoc()) {

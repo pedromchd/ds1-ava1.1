@@ -10,6 +10,11 @@ $result = $stmt->get_result();
 $row = $result->fetch_assoc();
 $db->close();
 
+if (!$result || !$row) {
+  header('Location: /login.php');
+  exit;
+}
+
 if (password_verify($pass, $row['pass'])) {
   session_start();
   $_SESSION['user'] = $row['id'];
@@ -17,3 +22,5 @@ if (password_verify($pass, $row['pass'])) {
   header('Location: /home.php');
   exit;
 }
+header('Location: /login.php');
+exit;
