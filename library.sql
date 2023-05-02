@@ -49,7 +49,7 @@ CREATE TABLE `game` (
   `year` year(4) NOT NULL,
   `system` int(11) DEFAULT NULL,
   `developer` varchar(255) NOT NULL,
-  `cover` varchar(255) NOT NULL,
+  `cover` varchar(255) DEFAULT NULL,
   `user` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 

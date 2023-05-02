@@ -7,7 +7,7 @@ $name = $_SESSION['name'];
 $game = $_GET['game'];
 
 $db = new mysqli('localhost', 'root', '', 'library');
-$stmt = $db->prepare('SELECT game.*, system.name AS systemName, user.name AS userName FROM game LEFT JOIN system ON game.system = system.id JOIN user ON game.user = user.id WHERE game.id = ?');
+$stmt = $db->prepare('SELECT game.*, IFNULL(system.name, "[empty]") AS systemName, user.name AS userName FROM game LEFT JOIN system ON game.system = system.id JOIN user ON game.user = user.id WHERE game.id = ?');
 $stmt->bind_param('s', $game);
 $stmt->execute();
 $result = $stmt->get_result();

@@ -10,7 +10,7 @@ if ($user !== 1 || $name !== 'admin') {
 }
 
 $db = new mysqli('localhost', 'root', '', 'library');
-$result = $db->query('SELECT game.*, system.name AS systemName, user.name AS userName FROM game LEFT JOIN system ON game.system = system.id JOIN user ON game.user = user.id');
+$result = $db->query('SELECT game.*, IFNULL(system.name, "[empty]") AS systemName, user.name AS userName FROM game LEFT JOIN system ON game.system = system.id JOIN user ON game.user = user.id');
 $db->close();
 ?>
 
@@ -42,7 +42,7 @@ $db->close();
   </header>
   <main class="flex-grow p-5 overflow-y-scroll">
     <section>
-      <h2 class="mb-3 text-xl font-semibold">Viewing all users' games</h2>
+      <h2 class="mb-3 text-xl font-semibold">Viewing all games</h2>
       <article>
         <table class="border border-green-300">
           <tr class="bg-green-200 border border-green-300 divide-x divide-green-300 text-center font-semibold">
