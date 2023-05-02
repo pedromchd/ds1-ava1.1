@@ -3,7 +3,7 @@ $game = $_POST['game'];
 
 $db = new mysqli('localhost', 'root', '', 'library');
 
-$stmt = $db->prepare('INSERT INTO deleted (id, name, year, system, developer, user) SELECT game.id, game.name, game.year, IFNULL(system.name, "[empty]"), game.developer, user.name FROM game LEFT JOIN system ON game.system = system.id JOIN user ON game.user = user.id WHERE game.id = ?');
+$stmt = $db->prepare('INSERT INTO deleted (id, name, year, system, developer, user, exclusion) SELECT game.id, game.name, game.year, IFNULL(system.name, "[empty]"), game.developer, user.name, CURRENT_TIMESTAMP FROM game LEFT JOIN system ON game.system = system.id JOIN user ON game.user = user.id WHERE game.id = ?');
 $stmt->bind_param('s', $game);
 $stmt->execute();
 

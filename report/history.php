@@ -17,7 +17,7 @@ require_once('../tcpdf/tcpdf.php');
 
 $pdf = new TCPDF('L');
 
-$pdf->setTitle('Game Report');
+$pdf->setTitle('Remove History');
 
 $pdf->AddPage();
 

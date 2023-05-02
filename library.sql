@@ -90,12 +90,6 @@ INSERT INTO `user` (`id`, `name`, `email`, `pass`) VALUES
 --
 
 --
--- Indexes for table `deleted`
---
-ALTER TABLE `deleted`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `game`
 --
 ALTER TABLE `game`
