@@ -31,6 +31,7 @@ $db->close();
     <nav class="text-lg space-y-2">
       <ol class="border border-green-500 divide-y divide-green-500">
         <li class="bg-green-400 hover:bg-green-500"><a href="/new.php" class="p-2 block">Add game</a></li>
+        <li class="bg-green-400 hover:bg-green-500"><a href="/report/user.php" target="blank" class="p-2 block">Game Report</a></li>
       </ol>
       <ol class="border border-red-500 divide-y divide-red-500">
         <li class="bg-red-400 hover:bg-red-500"><a href="/auth/logout.php" class="p-2 block">Logout</a></li>
@@ -43,17 +44,17 @@ $db->close();
       <article>
         <table class="border border-green-300">
           <tr class="bg-green-200 border border-green-300 divide-x divide-green-300 text-center font-semibold">
-            <td class="p-2">Cover</td>
-            <td class="p-2">Name</td>
-            <td class="p-2">Year</td>
-            <td class="p-2">System</td>
-            <td class="p-2">Developer</td>
-            <td class="p-2">Options</td>
+            <th class="p-2">Cover</th>
+            <th class="p-2">Name</th>
+            <th class="p-2">Year</th>
+            <th class="p-2">System</th>
+            <th class="p-2">Developer</th>
+            <th class="p-2">Options</th>
           </tr>
           <?php
           while ($row = $result->fetch_assoc()) {
-            echo
-            "<tr class='border border-green-300 divide-x divide-green-300 text-center'>
+            echo <<<EOD
+            <tr class='border border-green-300 divide-x divide-green-300 text-center'>
               <td><img src='/library/$row[cover]' class='object-cover h-20 w-40' /></td>
               <td class='p-2'>$row[name]</td>
               <td class='p-2'>$row[year]</td>
@@ -63,7 +64,8 @@ $db->close();
                 <a href='/edit.php?game=$row[id]'class='block p-1 bg-green-200 hover:bg-green-300'>Edit</a>
                 <a href='/delete.php?game=$row[id]'class='block p-1 bg-green-200 hover:bg-green-300'>Delete</a>
               </td>
-            </tr>";
+            </tr>
+            EOD;
           }
           ?>
         </table>
