@@ -1,4 +1,4 @@
-<?php 
+<?php
 require('config.php');
 
 if (isset($_POST['name'], $_POST['owner'])) {
@@ -33,6 +33,11 @@ if (isset($_POST['name'], $_POST['owner'])) {
     <nav class="text-lg space-y-2">
       <ol class="border border-green-500 divide-y divide-green-500">
         <li class="bg-green-400 hover:bg-green-500"><a href="/admin.php" class="p-2 block">View games</a></li>
+        <li class="bg-green-400 hover:bg-green-500"><a href="/report/admin.php" target="blank" class="p-2 block">Game Report</a></li>
+      </ol>
+      <ol class="border border-orange-500 divide-y divide-orange-500">
+        <li class="bg-orange-400 hover:bg-orange-500"><a href="/report/summary.php" target="blank" class="p-2 block">Report Summary</a></li>
+        <li class="bg-orange-400 hover:bg-orange-500"><a href="/report/history.php" target="blank" class="p-2 block">Remove History</a></li>
       </ol>
       <ol class="border border-blue-500 divide-y divide-blue-500">
         <li class="bg-blue-400 hover:bg-blue-500"><a href="/system/view.php" class="p-2 block">View systems</a></li>

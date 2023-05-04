@@ -23,6 +23,11 @@ $db->close();
     <nav class="text-lg space-y-2">
       <ol class="border border-green-500 divide-y divide-green-500">
         <li class="bg-green-400 hover:bg-green-500"><a href="/admin.php" class="p-2 block">View games</a></li>
+        <li class="bg-green-400 hover:bg-green-500"><a href="/report/admin.php" target="blank" class="p-2 block">Game Report</a></li>
+      </ol>
+      <ol class="border border-orange-500 divide-y divide-orange-500">
+        <li class="bg-orange-400 hover:bg-orange-500"><a href="/report/summary.php" target="blank" class="p-2 block">Report Summary</a></li>
+        <li class="bg-orange-400 hover:bg-orange-500"><a href="/report/history.php" target="blank" class="p-2 block">Remove History</a></li>
       </ol>
       <ol class="border border-blue-500 divide-y divide-blue-500">
         <li class="bg-blue-400 hover:bg-blue-500"><a href="/system/new.php" class="p-2 block">Add system</a></li>
@@ -38,16 +43,16 @@ $db->close();
       <article>
         <table class="border border-blue-300">
           <tr class="bg-blue-200 border border-blue-300 divide-x divide-blue-300 text-center font-semibold">
-            <td class="p-2">ID</td>
-            <td class="p-2">Name</td>
-            <td class="p-2">Owner</td>
-            <td class="p-2">Games</td>
-            <td class="p-2">Options</td>
+            <th class="p-2">ID</th>
+            <th class="p-2">Name</th>
+            <th class="p-2">Owner</th>
+            <th class="p-2">Games</th>
+            <th class="p-2">Options</th>
           </tr>
           <?php
           while ($row = $result->fetch_assoc()) {
-            echo
-            "<tr class='border border-blue-300 divide-x divide-blue-300 text-center'>
+            echo <<<EOD
+            <tr class='border border-blue-300 divide-x divide-blue-300 text-center'>
               <td class='p-2'>$row[id]</td>
               <td class='p-2'>$row[name]</td>
               <td class='p-2'>$row[owner]</td>
@@ -56,7 +61,8 @@ $db->close();
                 <a href='/system/edit.php?system=$row[id]'class='block p-1 bg-blue-200 hover:bg-blue-300'>Edit</a>
                 <a href='/system/delete.php?system=$row[id]'class='block p-1 bg-blue-200 hover:bg-blue-300'>Delete</a>
               </td>
-            </tr>";
+            </tr>
+            EOD;
           }
           ?>
         </table>
