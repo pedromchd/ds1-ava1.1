@@ -58,17 +58,15 @@ $db->close();
         <label for="year">Year:</label>
         <input type="number" name="year" id="year" value="<?= $row['year'] ?>" required class="px-1 py-0.5 border border-green-500 focus:outline-green-600">
         <label for="system">System:</label>
-        <select name="system" id="system" required class="px-1 py-0.5 border border-green-500 focus:outline-green-600">
-          <option disabled>Select one</option>
-          <?php
-          while ($sys = $result->fetch_assoc()) {
-            if ($sys['id'] == $row['system']) {
-              echo "<option value=$sys[id] selected>$sys[name]</option>";
-              continue;
-            }
-            echo "<option value=$sys[id]>$sys[name]</option>";
+        <select name="system" id="system" class="px-1 py-0.5 border border-green-500 focus:outline-green-600">
+          <option disabled selected>Select one</option>
+          <?php while ($sys = $result->fetch_assoc()) :
+          if ($sys['id'] == $row['system']) {
+            echo "<option value=$sys[id] selected>$sys[name]</option>";
+            continue;
           }
-          ?>
+          echo "<option value=$sys[id]>$sys[name]</option>";
+          endwhile; ?>
         </select>
         <label for="developer">Developer:</label>
         <input type="text" name="developer" id="developer" value="<?= $row['developer'] ?>" required class="px-1 py-0.5 border border-green-500 focus:outline-green-600">

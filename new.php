@@ -53,11 +53,9 @@ $db->close();
         <label for="system">System:</label>
         <select name="system" id="system" class="px-1 py-0.5 border border-green-500 focus:outline-green-600">
           <option disabled selected>Select one</option>
-          <?php
-          while ($row = $result->fetch_assoc()) {
-            echo "<option value=$row[id]>$row[name]</option>";
-          }
-          ?>
+          <?php while ($row = $result->fetch_assoc()) :
+          echo "<option value=$row[id]>$row[name]</option>";
+          endwhile; ?>
         </select>
         <label for="developer">Developer:</label>
         <input type="text" name="developer" id="developer" required class="px-1 py-0.5 border border-green-500 focus:outline-green-600">

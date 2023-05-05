@@ -49,22 +49,20 @@ $db->close();
             <th class="p-2">Games</th>
             <th class="p-2">Options</th>
           </tr>
-          <?php
-          while ($row = $result->fetch_assoc()) {
-            echo <<<EOD
-            <tr class='border border-blue-300 divide-x divide-blue-300 text-center'>
-              <td class='p-2'>$row[id]</td>
-              <td class='p-2'>$row[name]</td>
-              <td class='p-2'>$row[owner]</td>
-              <td class='p-2'>$row[games]</td>
-              <td class='p-1 space-y-1'>
-                <a href='/system/edit.php?system=$row[id]'class='block p-1 bg-blue-200 hover:bg-blue-300'>Edit</a>
-                <a href='/system/delete.php?system=$row[id]'class='block p-1 bg-blue-200 hover:bg-blue-300'>Delete</a>
-              </td>
-            </tr>
-            EOD;
-          }
-          ?>
+          <?php while ($row = $result->fetch_assoc()) :
+          echo <<<HTML
+          <tr class='border border-blue-300 divide-x divide-blue-300 text-center'>
+            <td class='p-2'>$row[id]</td>
+            <td class='p-2'>$row[name]</td>
+            <td class='p-2'>$row[owner]</td>
+            <td class='p-2'>$row[games]</td>
+            <td class='p-1 space-y-1'>
+              <a href='/system/edit.php?system=$row[id]'class='block p-1 bg-blue-200 hover:bg-blue-300'>Edit</a>
+              <a href='/system/delete.php?system=$row[id]'class='block p-1 bg-blue-200 hover:bg-blue-300'>Delete</a>
+            </td>
+          </tr>
+          HTML;
+          endwhile; ?>
         </table>
       </article>
     </section>
