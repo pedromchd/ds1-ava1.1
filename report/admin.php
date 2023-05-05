@@ -30,7 +30,7 @@ class MYPDF extends TCPDF {
 $pdf = new MYPDF('L', 'mm', 'A4', true, 'UTF-8');
 
 $pdf->setCreator(PDF_CREATOR);
-$pdf->setAuthor($name);
+$pdf->setAuthor('admin');
 $pdf->setTitle('Game Report');
 
 $pdf->setHeaderData('', 0, "Users' Game Report", 'by Querty Library', array(0, 0, 0), array(0, 0, 0));
