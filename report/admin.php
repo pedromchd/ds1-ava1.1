@@ -52,7 +52,7 @@ $pdf->setLineStyle(array('width' => 0.25, 'color' => array(74, 222, 128)));
 $pdf->setFillColorArray(array(134, 239, 172));
 $pdf->setFont('helvetica', 'B', 12);
 
-$pdf->MultiRow(['ID', 'Name', 'Year', 'System', 'Developer', 'User']);
+$pdf->MultiRow(array('ID', 'Name', 'Year', 'System', 'Developer', 'User'));
 
 $pdf->setFillColorArray(array(187, 247, 208));
 $pdf->setFont('helvetica', 'R', 12);

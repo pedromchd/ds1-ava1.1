@@ -33,7 +33,7 @@ $pdf->setCreator(PDF_CREATOR);
 $pdf->setAuthor($name);
 $pdf->setTitle('Game Report');
 
-$pdf->setHeaderData('', 0, "$name' Game Report", 'by Querty Library', array(0, 0, 0), array(0, 0, 0));
+$pdf->setHeaderData('', 0, "$name's Game Report", 'by Querty Library', array(0, 0, 0), array(0, 0, 0));
 $pdf->setHeaderFont(array('helvetica', 'B', 16));
 $pdf->setHeaderMargin(10);
 
@@ -52,7 +52,7 @@ $pdf->setLineStyle(array('width' => 0.25, 'color' => array(74, 222, 128)));
 $pdf->setFillColorArray(array(134, 239, 172));
 $pdf->setFont('helvetica', 'B', 12);
 
-$pdf->MultiRow(['Name', 'Year', 'System', 'Developer']);
+$pdf->MultiRow(array('Name', 'Year', 'System', 'Developer'));
 
 $pdf->setFillColorArray(array(187, 247, 208));
 $pdf->setFont('helvetica', 'R', 12);
