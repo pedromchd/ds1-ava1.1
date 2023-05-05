@@ -10,109 +10,52 @@ if ($user !== 1 || $name !== 'admin') {
 }
 
 $db = new mysqli('localhost', 'root', '', 'library');
-$result = $db->query('SELECT game.cover, game.name, user.name FROM game JOIN user ON game.user = user.id');
+$result = $db->query('SELECT game.cover, game.name, user.name AS userName FROM game JOIN user ON game.user = user.id');
 $db->close();
 
-require_once('../tcpdf/tcpdf.php');
+require_once('../tcpdf/examples/tcpdf_include.php');
 
-// class MYPDF extends TCPDF {
-//   function Table(array $row = []) {
-//     $cellWidth = ($this->getPageWidth() - 20) / sizeof($row);
-//     $y_start = $y_end = $this->GetY();
-//     foreach ($row as $value) {
-//       $this->MultiCell($cellWidth, 0, $value, 1, 'L', true, 2, $this->GetX(), $y_start, true, 0);
-//       $y_end = max($this->GetY(), $y_end);
-//     }
-//     $this->setXY(10, $y_end);
-//   }
-// }
+$pdf = new TCPDF('P');
 
-$pdf = new TCPDF('P', 'mm', 'A4', true, 'UTF-8');
-
-$pdf->setCreator(PDF_CREATOR);
-$pdf->setAuthor('admin');
 $pdf->setTitle('Report Summary');
-
-$pdf->setHeaderData('', 0, 'Game Report Summary', 'by Querty Library', array(0, 0, 0), array(0, 0, 0));
-$pdf->setHeaderFont(array('helvetica', 'B', 16));
-$pdf->setHeaderMargin(10);
-
-$pdf->setFooterData(array(0, 0, 0), array(0, 0, 0));
-$pdf->setFooterFont(array('helvetica', 'R', 10));
-$pdf->setFooterMargin(10);
-
-$pdf->setMargins(10, 30, 10);
-$pdf->setAutoPageBreak(true, 20);
 
 $pdf->AddPage();
 
-$pdf->setCellPaddings(2, 2, 2, 2);
-$pdf->setLineStyle(array('width' => 0.25, 'color' => array(74, 222, 128)));
+$html = <<<HTML
+<style>
+  table {
+    border: 1px solid #4ade80;
+  }
+  th {
+    border: 1px solid #4ade80;
+    background-color: #86efac;
+    font-weight: bold;
+  }
+  td {
+    border: 1px solid #4ade80;
+    background-color: #bbf7d0;
+  }
+</style>
 
-// $pdf->setFillColorArray(array(187, 247, 208));
-$pdf->setFont('helvetica', 'R', 12);
+<table cellpadding="5">
+  <tr>
+    <th>Cover</th>
+    <th>Name</th>
+    <th>User</th>
+  </tr>
+HTML;
 
-// $row = $result->fetch_assoc();
+while ($row = $result->fetch_assoc()) {
+  $html .= <<<HTML
+  <tr>
+    <td><img src="example.jpg" /></td>
+    <td>$row[name]</td>
+    <td>$row[userName]</td>
+  </tr>
+  HTML;
+}
 
-$pdf->StartTransform();
-$pdf->Rect($pdf->GetX() + 5, $pdf->GetY() + 15, 60, 50, 'CNZ');
-$pdf->Image('example.jpg', $pdf->GetX() + 5, $pdf->GetY() + 15, 0, 50, '', '', '', false);
-$pdf->StopTransform();
-$pdf->writeHTMLCell(70, 70, $pdf->GetX(), $pdf->GetY(), '<p>Olá<br>Pedro</p>', 1, 0, false, true, 'C', true);
+$pdf->writeHTML($html . '</table>');
 
-$pdf->StartTransform();
-$pdf->Rect($pdf->GetX() + 5, $pdf->GetY() + 15, 60, 50, 'CNZ');
-$pdf->Image('example.jpg', $pdf->GetX() + 5, $pdf->GetY() + 15, 0, 50, '', '', '', false);
-$pdf->StopTransform();
-$pdf->writeHTMLCell(70, 70, $pdf->GetX(), $pdf->GetY(), '<p>Olá<br>Pedro</p>', 1, 0, false, true, 'C', true);
-
-$pdf->StartTransform();
-$pdf->Rect($pdf->GetX() + 5, $pdf->GetY() + 15, 60, 50, 'CNZ');
-$pdf->Image('example.jpg', $pdf->GetX() + 5, $pdf->GetY() + 15, 0, 50, '', '', '', false);
-$pdf->StopTransform();
-$pdf->writeHTMLCell(70, 70, $pdf->GetX(), $pdf->GetY(), '<p>Olá<br>Pedro</p>', 1, 0, false, true, 'C', true);
-
-$pdf->Ln();
-
-$pdf->StartTransform();
-$pdf->Rect($pdf->GetX() + 5, $pdf->GetY() + 15, 60, 50, 'CNZ');
-$pdf->Image('example.jpg', $pdf->GetX() + 5, $pdf->GetY() + 15, 0, 50, '', '', '', false);
-$pdf->StopTransform();
-$pdf->writeHTMLCell(70, 70, $pdf->GetX(), $pdf->GetY(), '<p>Olá<br>Pedro</p>', 1, 0, false, true, 'C', true);
-
-$pdf->StartTransform();
-$pdf->Rect($pdf->GetX() + 5, $pdf->GetY() + 15, 60, 50, 'CNZ');
-$pdf->Image('example.jpg', $pdf->GetX() + 5, $pdf->GetY() + 15, 0, 50, '', '', '', false);
-$pdf->StopTransform();
-$pdf->writeHTMLCell(70, 70, $pdf->GetX(), $pdf->GetY(), '<p>Olá<br>Pedro</p>', 1, 0, false, true, 'C', true);
-
-$pdf->StartTransform();
-$pdf->Rect($pdf->GetX() + 5, $pdf->GetY() + 15, 60, 50, 'CNZ');
-$pdf->Image('example.jpg', $pdf->GetX() + 5, $pdf->GetY() + 15, 0, 50, '', '', '', false);
-$pdf->StopTransform();
-$pdf->writeHTMLCell(70, 70, $pdf->GetX(), $pdf->GetY(), '<p>Olá<br>Pedro</p>', 1, 0, false, true, 'C', true);
-
-$pdf->Ln();
-
-$pdf->StartTransform();
-$pdf->Rect($pdf->GetX() + 5, $pdf->GetY() + 15, 60, 50, 'CNZ');
-$pdf->Image('example.jpg', $pdf->GetX() + 5, $pdf->GetY() + 15, 0, 50, '', '', '', false);
-$pdf->StopTransform();
-$pdf->writeHTMLCell(70, 70, $pdf->GetX(), $pdf->GetY(), '<p>Olá<br>Pedro</p>', 1, 0, false, true, 'C', true);
-
-$pdf->StartTransform();
-$pdf->Rect($pdf->GetX() + 5, $pdf->GetY() + 15, 60, 50, 'CNZ');
-$pdf->Image('example.jpg', $pdf->GetX() + 5, $pdf->GetY() + 15, 0, 50, '', '', '', false);
-$pdf->StopTransform();
-$pdf->writeHTMLCell(70, 70, $pdf->GetX(), $pdf->GetY(), '<p>Olá<br>Pedro</p>', 1, 0, false, true, 'C', true);
-
-$pdf->StartTransform();
-$pdf->Rect($pdf->GetX() + 5, $pdf->GetY() + 15, 60, 50, 'CNZ');
-$pdf->Image('example.jpg', $pdf->GetX() + 5, $pdf->GetY() + 15, 0, 50, '', '', '', false);
-$pdf->StopTransform();
-$pdf->writeHTMLCell(70, 70, $pdf->GetX(), $pdf->GetY(), '<p>Olá<br>Pedro</p>', 1, 0, false, true, 'C', true);
-
-$pdf->Ln();
-
-$pdf->Output('summary.pdf', 'I');
+$pdf->Output('summary.pdf');
 exit;

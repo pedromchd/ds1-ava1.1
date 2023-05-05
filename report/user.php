@@ -10,56 +10,54 @@ if ($user === 1 && $name === 'admin') {
 }
 
 $db = new mysqli('localhost', 'root', '', 'library');
-$result = $db->query("SELECT game.name, game.year, IFNULL(system.name, '[empty]') AS systemName, game.developer FROM game LEFT JOIN system ON game.system = system.id WHERE game.user = $user");
+$result = $db->query("SELECT game.*, IFNULL(system.name, '[empty]') AS systemName FROM game LEFT JOIN system ON game.system = system.id WHERE game.user = $user");
 $db->close();
 
-require_once('../tcpdf/tcpdf.php');
+require_once('../tcpdf/examples/tcpdf_include.php');
 
-class MYPDF extends TCPDF {
-  function MultiRow(array $row = []) {
-    $cellWidth = ($this->getPageWidth() - 20) / sizeof($row);
-    $y_start = $y_end = $this->GetY();
-    foreach ($row as $value) {
-      $this->MultiCell($cellWidth, 0, $value, 1, 'L', true, 2, $this->GetX(), $y_start, true, 0);
-      $y_end = max($this->GetY(), $y_end);
-    }
-    $this->setXY(10, $y_end);
-  }
-}
+$pdf = new TCPDF('L');
 
-$pdf = new MYPDF('L', 'mm', 'A4', true, 'UTF-8');
-
-$pdf->setCreator(PDF_CREATOR);
-$pdf->setAuthor($name);
 $pdf->setTitle('Game Report');
-
-$pdf->setHeaderData('', 0, "$name's Game Report", 'by Querty Library', array(0, 0, 0), array(0, 0, 0));
-$pdf->setHeaderFont(array('helvetica', 'B', 16));
-$pdf->setHeaderMargin(10);
-
-$pdf->setFooterData(array(0, 0, 0), array(0, 0, 0));
-$pdf->setFooterFont(array('helvetica', 'R', 10));
-$pdf->setFooterMargin(10);
-
-$pdf->setMargins(10, 30, 10);
-$pdf->setAutoPageBreak(true, 20);
 
 $pdf->AddPage();
 
-$pdf->setCellPaddings(2, 2, 2, 2);
-$pdf->setLineStyle(array('width' => 0.25, 'color' => array(74, 222, 128)));
+$html = <<<HTML
+<style>
+  table {
+    border: 1px solid #4ade80;
+  }
+  th {
+    border: 1px solid #4ade80;
+    background-color: #86efac;
+    font-weight: bold;
+  }
+  td {
+    border: 1px solid #4ade80;
+    background-color: #bbf7d0;
+  }
+</style>
 
-$pdf->setFillColorArray(array(134, 239, 172));
-$pdf->setFont('helvetica', 'B', 12);
-
-$pdf->MultiRow(array('Name', 'Year', 'System', 'Developer'));
-
-$pdf->setFillColorArray(array(187, 247, 208));
-$pdf->setFont('helvetica', 'R', 12);
+<table cellpadding="5">
+  <tr>
+    <th>Name</th>
+    <th>Year</th>
+    <th>System</th>
+    <th>Developer</th>
+  </tr>
+HTML;
 
 while ($row = $result->fetch_assoc()) {
-  $pdf->MultiRow($row);
+  $html .= <<<HTML
+  <tr>
+    <td>$row[name]</td>
+    <td>$row[year]</td>
+    <td>$row[systemName]</td>
+    <td>$row[developer]</td>
+  </tr>
+  HTML;
 }
 
-$pdf->Output("$name.pdf", 'I');
+$pdf->writeHTML($html . '</table>');
+
+$pdf->Output("$name.pdf");
 exit;
