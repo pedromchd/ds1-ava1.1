@@ -15,17 +15,17 @@ $db->close();
 
 require_once('../tcpdf/examples/tcpdf_include.php');
 
-$pdf = new TCPDF('L');
+$pdf = new TCPDF('P');
 
 $pdf->setTitle('Game Report');
+
+$pdf->setPrintHeader(false);
+$pdf->setPrintFooter(false);
 
 $pdf->AddPage();
 
 $html = <<<HTML
 <style>
-  table {
-    border: 1px solid #4ade80;
-  }
   th {
     border: 1px solid #4ade80;
     background-color: #86efac;

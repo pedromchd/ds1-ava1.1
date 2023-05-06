@@ -10,7 +10,7 @@ if ($user !== 1 || $name !== 'admin') {
 }
 
 $db = new mysqli('localhost', 'root', '', 'library');
-$result = $db->query('SELECT game.cover, game.name, user.name AS userName FROM game JOIN user ON game.user = user.id');
+$result = $db->query('SELECT IFNULL(game.cover, "empty.png") AS cover, game.name, user.name AS userName FROM game JOIN user ON game.user = user.id');
 $db->close();
 
 require_once('../tcpdf/examples/tcpdf_include.php');
@@ -19,43 +19,48 @@ $pdf = new TCPDF('P');
 
 $pdf->setTitle('Report Summary');
 
+$pdf->setPrintHeader(false);
+$pdf->setPrintFooter(false);
+
 $pdf->AddPage();
+
+$w = $pdf->getPageWidth();
+$h = $pdf->getPageHeight();
+
+$imgWidth = ($w - 50) / 3;
+$imgHeight = ($h - 140) / 5;
 
 $html = <<<HTML
 <style>
-  table {
-    border: 1px solid #4ade80;
-  }
-  th {
-    border: 1px solid #4ade80;
-    background-color: #86efac;
-    font-weight: bold;
-  }
   td {
-    border: 1px solid #4ade80;
-    background-color: #bbf7d0;
+    line-height: 5mm;
+    border: 1px solid #fb923c;
+    background-color: #fed7aa;
+  }
+  img {
+    width: $imgWidth mm;
+    height: $imgHeight mm;
   }
 </style>
 
-<table cellpadding="5">
+<table cellpadding="5mm">
   <tr>
-    <th>Cover</th>
-    <th>Name</th>
-    <th>User</th>
-  </tr>
 HTML;
 
+$count = 0;
 while ($row = $result->fetch_assoc()) {
+  if ($count == 3) {
+    $html .= '</tr><tr>';
+    $count %= 3;
+  }
+  $count++;
+
   $html .= <<<HTML
-  <tr>
-    <td><img src="example.jpg" /></td>
-    <td>$row[name]</td>
-    <td>$row[userName]</td>
-  </tr>
+  <td><img src="../library/$row[cover]"><br>$row[name]<br>$row[userName]</td>
   HTML;
 }
 
-$pdf->writeHTML($html . '</table>');
+$pdf->writeHTML($html . '</tr></table>');
 
 $pdf->Output('summary.pdf');
 exit;

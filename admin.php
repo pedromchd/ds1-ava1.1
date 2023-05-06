@@ -63,17 +63,17 @@ $db->close();
           <?php
           while ($row = $result->fetch_assoc()) :
           echo <<<HTML
-          <tr class='border border-green-300 divide-x divide-green-300 text-center'>
-            <td class='p-2'>$row[id]</td>
-            <td><img src='/library/$row[cover]' class='object-cover h-20 w-40' /></td>
-            <td class='p-2'>$row[name]</td>
-            <td class='p-2'>$row[year]</td>
-            <td class='p-2'>$row[systemName]</td>
-            <td class='p-2'>$row[developer]</td>
-            <td class='p-2'>$row[userName]</td>
-            <td class='p-1 space-y-1'>
-              <a href='/edit.php?game=$row[id]'class='block p-1 bg-green-200 hover:bg-green-300'>Edit</a>
-              <a href='/delete.php?game=$row[id]'class='block p-1 bg-green-200 hover:bg-green-300'>Delete</a>
+          <tr class="border border-green-300 divide-x divide-green-300 text-center">
+            <td class="p-2">$row[id]</td>
+            <td><img src="/library/$row[cover]" class="object-cover h-20 w-40" alt="cover not found" /></td>
+            <td class="p-2">$row[name]</td>
+            <td class="p-2">$row[year]</td>
+            <td class="p-2">$row[systemName]</td>
+            <td class="p-2">$row[developer]</td>
+            <td class="p-2">$row[userName]</td>
+            <td class="p-1 space-y-1">
+              <a href="/edit.php?game=$row[id]"class="block p-1 bg-green-200 hover:bg-green-300">Edit</a>
+              <a href="/delete.php?game=$row[id]"class="block p-1 bg-green-200 hover:bg-green-300">Delete</a>
             </td>
           </tr>
           HTML;

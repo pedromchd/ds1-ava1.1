@@ -35,13 +35,13 @@ $db->close();
         <li class="bg-green-400 hover:bg-green-500"><a href="/report/user.php" target="blank" class="p-2 block">Game Report</a></li>
       </ol>
       <?php if ($user === 1 && $name === 'admin') : ?>
-      <ol class="border border-orange-500 divide-y divide-orange-500">
-        <li class="bg-orange-400 hover:bg-orange-500"><a href="/report/summary.php" target="blank" class="p-2 block">Report Summary</a></li>
-        <li class="bg-orange-400 hover:bg-orange-500"><a href="/report/history.php" target="blank" class="p-2 block">Remove History</a></li>
-      </ol>
-      <ol class="border border-blue-500 divide-y divide-blue-500">
-        <li class="bg-blue-400 hover:bg-blue-500"><a href="/system/view.php" class="p-2 block">View systems</a></li>
-      </ol>
+        <ol class="border border-orange-500 divide-y divide-orange-500">
+          <li class="bg-orange-400 hover:bg-orange-500"><a href="/report/summary.php" target="blank" class="p-2 block">Report Summary</a></li>
+          <li class="bg-orange-400 hover:bg-orange-500"><a href="/report/history.php" target="blank" class="p-2 block">Remove History</a></li>
+        </ol>
+        <ol class="border border-blue-500 divide-y divide-blue-500">
+          <li class="bg-blue-400 hover:bg-blue-500"><a href="/system/view.php" class="p-2 block">View systems</a></li>
+        </ol>
       <?php endif; ?>
       <ol class="border border-red-500 divide-y divide-red-500">
         <li class="bg-red-400 hover:bg-red-500"><a href="/auth/logout.php" class="p-2 block">Logout</a></li>
@@ -69,7 +69,7 @@ $db->close();
               <td class="p-2"><?= $row['id'] ?></td>
               <td class="p-2"><?= $row['userName'] ?></td>
             <?php endif; ?>
-            <td><img src="/library/<?= $row['cover'] ?>" class="object-cover h-20 w-40" /></td>
+            <td><img src="/library/<?= $row['cover'] ?>" class="object-cover h-20 w-40" alt="cover not found" /></td>
             <td class="p-2"><?= $row['name'] ?></td>
             <td class="p-2"><?= $row['year'] ?></td>
             <td class="p-2"><?= $row['systemName'] ?></td>

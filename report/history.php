@@ -19,21 +19,21 @@ $pdf = new TCPDF('L');
 
 $pdf->setTitle('Remove History');
 
+$pdf->setPrintHeader(false);
+$pdf->setPrintFooter(false);
+
 $pdf->AddPage();
 
 $html = <<<HTML
 <style>
-  table {
-    border: 1px solid #4ade80;
-  }
   th {
-    border: 1px solid #4ade80;
-    background-color: #86efac;
+    border: 1px solid #fb923c;
+    background-color: #fdba74;
     font-weight: bold;
   }
   td {
-    border: 1px solid #4ade80;
-    background-color: #bbf7d0;
+    border: 1px solid #fb923c;
+    background-color: #fed7aa;
   }
 </style>
 
