@@ -10,7 +10,7 @@ if ($user !== 1 || $name !== 'admin') {
 }
 
 $db = new mysqli('localhost', 'root', '', 'library');
-$result = $db->query('SELECT IFNULL(game.cover, "empty.png") AS cover, game.name, user.name AS userName FROM game JOIN user ON game.user = user.id');
+$result = $db->query('SELECT IFNULL(game.cover, "uploads/empty.png") AS cover, game.name, user.name AS userName FROM game JOIN user ON game.user = user.id');
 $db->close();
 
 require_once('../tcpdf/examples/tcpdf_include.php');
