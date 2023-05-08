@@ -8,7 +8,15 @@ if (isset($_POST['name'], $_POST['owner'], $_POST['system'])) {
   $owner = $_POST['owner'];
   $system = $_POST['system'];
 
-  $stmt = $db->prepare('UPDATE system SET name = ?, owner = ? WHERE id = ?');
+  $stmt = $db->prepare(
+    <<<SQL
+      UPDATE system
+      SET
+        name = ?,
+        owner = ?
+      WHERE id = ?
+    SQL
+  );
   $stmt->bind_param('sss', $name, $owner, $system);
   $stmt->execute();
 

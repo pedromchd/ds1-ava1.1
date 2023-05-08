@@ -5,7 +5,7 @@ $user = $_SESSION['user'];
 $name = $_SESSION['name'];
 
 $db = new mysqli('localhost', 'root', '', 'library');
-$result = $db->query("SELECT * FROM system");
+$result = $db->query('SELECT * FROM system');
 $db->close();
 ?>
 

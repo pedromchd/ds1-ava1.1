@@ -6,7 +6,17 @@ $developer = $_POST['developer'];
 $game = $_POST['game'];
 
 $db = new mysqli('localhost', 'root', '', 'library');
-$stmt = $db->prepare('UPDATE game SET name = ?, year = ?, system = ?, developer = ? WHERE id = ?');
+$stmt = $db->prepare(
+  <<<SQL
+    UPDATE game
+    SET
+      name = ?,
+      year = ?,
+      system = ?,
+      developer = ?
+    WHERE id = ?
+  SQL
+);
 $stmt->bind_param('sssss', $name, $year, $system, $developer, $game);
 $stmt->execute();
 

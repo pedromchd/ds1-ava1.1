@@ -2,7 +2,16 @@
 require('config.php');
 
 $db = new mysqli('localhost', 'root', '', 'library');
-$result = $db->query('SELECT system.*, COUNT(game.id) AS games FROM system LEFT JOIN game ON system.id = game.system GROUP BY system.id');
+$result = $db->query(
+  <<<SQL
+    SELECT
+      system.*,
+      COUNT(game.id) AS games
+    FROM system
+    LEFT JOIN game ON system.id = game.system
+    GROUP BY system.id
+  SQL
+);
 $db->close();
 ?>
 

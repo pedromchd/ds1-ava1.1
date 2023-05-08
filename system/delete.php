@@ -16,7 +16,17 @@ if (isset($_POST['system'])) {
 
 $system = $_GET['system'];
 
-$stmt = $db->prepare('SELECT system.*, COUNT(game.id) AS games FROM system LEFT JOIN game ON system.id = game.system WHERE system.id = ? GROUP BY system.id');
+$stmt = $db->prepare(
+  <<<SQL
+    SELECT
+      system.*,
+      COUNT(game.id) AS games
+    FROM system
+    LEFT JOIN game ON system.id = game.system
+    WHERE system.id = ?
+    GROUP BY system.id
+  SQL
+);
 $stmt->bind_param('s', $system);
 $stmt->execute();
 $result = $stmt->get_result();

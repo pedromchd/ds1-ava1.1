@@ -10,7 +10,16 @@ if ($user !== 1 || $name !== 'admin') {
 }
 
 $db = new mysqli('localhost', 'root', '', 'library');
-$result = $db->query('SELECT IFNULL(game.cover, "uploads/empty.png") AS cover, game.name, user.name AS userName FROM game JOIN user ON game.user = user.id');
+
+$result = $db->query(<<<SQL
+  SELECT
+    IFNULL(game.cover, "uploads/empty.png") AS cover,
+    game.name,
+    user.name AS userName
+  FROM game
+  JOIN user ON game.user = user.id
+SQL);
+
 $db->close();
 
 require_once('../tcpdf/examples/tcpdf_include.php');
@@ -27,8 +36,9 @@ $pdf->AddPage();
 $w = $pdf->getPageWidth();
 $h = $pdf->getPageHeight();
 
-$imgWidth = ($w - 50) / 3;
-$imgHeight = ($h - 140) / 5;
+$cellWidth = ($w - 40) / 3;
+$imgWidth = ($w - 70) / 3;
+$imgHeight = ($h - 160) / 5;
 
 $html = <<<HTML
 <style>
@@ -36,6 +46,7 @@ $html = <<<HTML
     line-height: 5mm;
     border: 1px solid #fb923c;
     background-color: #fed7aa;
+    width: $cellWidth mm;
   }
   img {
     width: $imgWidth mm;
@@ -43,7 +54,7 @@ $html = <<<HTML
   }
 </style>
 
-<table cellpadding="5mm">
+<table cellspacing="5mm" cellpadding="5mm">
   <tr>
 HTML;
 

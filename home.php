@@ -10,7 +10,16 @@ if ($user === 1 && $name === 'admin') {
 }
 
 $db = new mysqli('localhost', 'root', '', 'library');
-$result = $db->query("SELECT game.*, IFNULL(system.name, '[empty]') AS systemName FROM game LEFT JOIN system ON game.system = system.id WHERE game.user = $user");
+$result = $db->query(
+  <<<SQL
+    SELECT
+      game.*,
+      IFNULL(system.name, "[empty]") AS systemName
+    FROM game
+    LEFT JOIN system ON game.system = system.id
+    WHERE game.user = $user
+  SQL
+);
 $db->close();
 ?>
 
