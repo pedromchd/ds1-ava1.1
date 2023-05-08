@@ -34,5 +34,5 @@ if ($file = $cover['tmp_name']) {
 
 $db->close();
 
-header('Location: /home.php');
+header("Location: /home.php#$game");
 exit;

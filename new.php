@@ -22,7 +22,7 @@ $db->close();
 
 <body class="h-screen bg-green-100 flex">
   <header class="py-3 px-5 bg-green-300">
-    <h1 class="mb-3 text-3xl font-bold">Querty Library</h1>
+    <h1 class="mb-3 text-3xl font-bold"><a href="/home.php">Querty Library</a></h1>
     <nav class="text-lg space-y-2">
       <ol class="border border-green-500 divide-y divide-green-500">
         <li class="bg-green-400 hover:bg-green-500"><a href="/home.php" class="p-2 block">View games</a></li>
