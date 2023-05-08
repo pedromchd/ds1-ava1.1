@@ -19,6 +19,7 @@ $result = $db->query(
     FROM game
     LEFT JOIN system ON game.system = system.id
     JOIN user ON game.user = user.id
+    ORDER BY YEAR DESC
   SQL
 );
 $db->close();
