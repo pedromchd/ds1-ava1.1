@@ -11,14 +11,16 @@ if ($user !== 1 || $name !== 'admin') {
 
 $db = new mysqli('localhost', 'root', '', 'library');
 
-$result = $db->query(<<<SQL
-  SELECT
-    IFNULL(game.cover, "uploads/empty.png") AS cover,
-    game.name,
-    user.name AS userName
-  FROM game
-  JOIN user ON game.user = user.id
-SQL);
+$result = $db->query(
+  <<<SQL
+    SELECT
+      IFNULL(game.cover, "uploads/empty.png") AS cover,
+      game.name,
+      user.name AS userName
+    FROM game
+    JOIN user ON game.user = user.id
+  SQL
+);
 
 $db->close();
 
@@ -58,13 +60,10 @@ $html = <<<HTML
   <tr>
 HTML;
 
-$count = 0;
-while ($row = $result->fetch_assoc()) {
-  if ($count == 3) {
+for ($i = 0; $row = $result->fetch_assoc(); $i++) {
+  if ($i !== 0 && $i % 3 === 0) {
     $html .= '</tr><tr>';
-    $count %= 3;
   }
-  $count++;
 
   $html .= <<<HTML
   <td><img src="../library/$row[cover]"><br>$row[name]<br>$row[userName]</td>
